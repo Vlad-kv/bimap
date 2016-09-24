@@ -185,7 +185,7 @@ bimap::left_iterator  bimap::find_left (left_t  const& left)  const {
 	
 	l_merge(l_root, c);
 	
-	if (v->l_data == left) {
+	if ((v) && (v->l_data == left)) {
 		return left_iterator(v, this);
 	} else {
 		return left_iterator(0, this);
@@ -197,7 +197,7 @@ bimap::right_iterator bimap::find_right(right_t const& right) const {
 	
 	r_merge(r_root, c);
 	
-	if (v->r_data == right) {
+	if ((v) && (v->r_data == right)) {
 		return right_iterator(v, this);
 	} else {
 		return right_iterator(0, this);

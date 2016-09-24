@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "bimap.h"
 using namespace std;
 char buf[100];
@@ -58,8 +59,8 @@ int main() {
 	
 	string c1, c2;
 	for (w = 1; w < 10; w++) {
-		c1 = to_string(w);
-		c2 = to_string(100 / w);
+		c1 = ::to_string(w);
+		c2 = ::to_string(100 / w);
 		c.insert(c1, c2);
 	}
 	
@@ -73,6 +74,16 @@ int main() {
 	cout << *it << " " << *it.flip() << "\n";
 	
 	c.erase(it);
+	
+	for (w = 0; w < 1000; w++) {
+		it = c.find_left("-1");
+	}
+	
+	for (w = 0; w < 100; w++) {
+		bimap::left_iterator  it1 =  c.find_left(to_string(rand() % 15));
+		bimap::right_iterator it2 = c.find_right(to_string(rand() % 15));
+	}
+	
 	
 	print();
     
